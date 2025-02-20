@@ -138,7 +138,7 @@ h2 {
 
 
 
-@media (min-width: 401px) and (max-width: 768px) {
+@media (min-width: 390px) and (max-width: 844px) {
 
   body {
     background-color: #1300E4;
@@ -157,7 +157,7 @@ h2 {
   
     color: white;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 100%;
   }
   
   /* Change the color of links on hover */
@@ -228,33 +228,28 @@ h2 {
 .image-container {
   margin-bottom: 30px;
   padding: 6px;
-  width: 450px;
+  width: 400px;
   opacity: 0.5;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: 5%;
-  margin-right: 5%;
-  align-self: center;
-  transform: translate(-50%, -50%);
+  display:block;
+  margin:0 auto;
+    width:100%; /* you can use % */
+    height: auto;
+
 }
 
+
 .line {
-  border-left: 3px solid #B5B7F7;
-  height: 200px;
-  position: absolute;
-  left: 0%;
-  margin-left: 7%;
-  top: 70%;
+  display: none;
 }
 
 .line-2 {
-  border-left: 3px solid #B5B7F7;
-  height: 200px;
-  position: absolute;
-  left: 55%;
-  margin-right: 5%;
-  top: 50px;
+  border-left: 2px solid #B5B7F7;
+  height: 160px;
+  position: absolute; 
+  left: 0%;
+  margin-left: 9%;
+  top: 73%;
+
 }
 
 .content-wrap {
@@ -269,5 +264,77 @@ h2 {
   align-items: center;
   padding:5%
 }
+
+
+
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+ /* The CSS-only approach using scroll-linked styling */
+        .paragraph {
+            opacity: 0.1; /* Start with low opacity */
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0.1; }
+            to { opacity: 1; }
+        }
+        
+        /* Trigger animation when paragraphs enter viewport using intersection observer polyfill */
+        .paragraph {
+            animation: fadeIn 0.5s forwards;
+            animation-play-state: paused;
+        }
+        
+        /* Pure CSS approach using scroll-driven opacity */
+        .text-container {
+            --scroll-length: 2000px; /* Total scroll area */
+            --paragraphs: 19; /* Total paragraphs */
+            --fade-zone: calc(var(--scroll-length) / var(--paragraphs));
+        }
+        
+        /* Dynamic fading based on scroll position */
+        @media (prefers-reduced-motion: no-preference) {
+            @supports (animation-timeline: scroll()) {
+                .paragraph {
+                    animation: none;
+                    opacity: 0.1;
+                }
+                
+                #p1 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: 0 calc(var(--fade-zone) * 1); }
+                #p2 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 0.5) calc(var(--fade-zone) * 1.5); }
+                #p3 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 1) calc(var(--fade-zone) * 2); }
+                #p4 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 1.5) calc(var(--fade-zone) * 2.5); }
+                #p5 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 2) calc(var(--fade-zone) * 3); }
+                #p6 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 2.5) calc(var(--fade-zone) * 3.5); }
+                #p7 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 3) calc(var(--fade-zone) * 4); }
+                #p8 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 3.5) calc(var(--fade-zone) * 4.5); }
+                #p9 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 4) calc(var(--fade-zone) * 5); }
+                #p10 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 4.5) calc(var(--fade-zone) * 5.5); }
+                #p11 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 5) calc(var(--fade-zone) * 6); }
+                #p12 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 5.5) calc(var(--fade-zone) * 6.5); }
+                #p13 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 6) calc(var(--fade-zone) * 7); }
+                #p14 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 6.5) calc(var(--fade-zone) * 7.5); }
+                #p15 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 7) calc(var(--fade-zone) * 8); }
+                #p16 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 7.5) calc(var(--fade-zone) * 8.5); }
+                #p17 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 8) calc(var(--fade-zone) * 9); }
+                #p18 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 8.5) calc(var(--fade-zone) * 9.5); }
+                #p19 { animation: fadeIn linear forwards; animation-timeline: scroll(); animation-range: calc(var(--fade-zone) * 9) calc(var(--fade-zone) * 10); }
+            }
+        }
+        
+        /* Fallback for browsers without scroll-timeline support */
+        .scroll-spacer {
+            height: 2500px;
+        }
+
+
+
+
 
 }
